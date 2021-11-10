@@ -31,7 +31,6 @@ SparseMatrix::Coord::Coord(size_t row, size_t col) :
 }
 
 // operator[] accessors
-// To be completed - Must adhere it requirements in the .h
 size_t& SparseMatrix::Coord::operator[](size_t index) {
     if (index == ROW)
     {
@@ -69,7 +68,6 @@ size_t const& SparseMatrix::Coord::operator[](size_t index) const {
 }
 
 // operator== comparison function
-// To be completed - Must adhere it requirements in the .h
 bool SparseMatrix::Coord::operator==(const Coord& rhs) const {
     if (r == rhs.r && c == rhs.c)
     {
@@ -109,9 +107,8 @@ SparseMatrix::SparseItem::SparseItem(Coord coord, double v)
 // ----------------------------------------------------------------------------
 
 // Constructor
-// To be completed - Must adhere to requirements in the .h
 SparseMatrix::SparseMatrix(size_t n) : 
-    /* Add code as needed */ n_(n)
+     n_(n)
 {
     if(0U == n_) {
         throw std::invalid_argument("n must be greater than 0");
@@ -128,7 +125,6 @@ SparseMatrix::SparseMatrix(size_t n) :
 }
 
 // Destructor
-// To be completed 
 SparseMatrix::~SparseMatrix() 
 {
     //for each row head pointer and col head pointer, delete the items in their lists
@@ -223,16 +219,12 @@ void SparseMatrix::print(std::ostream &os) const
 }
 
 
-// To be completed - Must adhere it requirements in the .h
-
 void SparseMatrix::deleteNode(SparseItem* node)
 {
 
     if(nullptr == node){
         throw std::invalid_argument("argument must not be null");
     }
-    /* Add necessary code to update all other pointers */
-    /* Note: calling delete is provided for you below  */
 
     //if first item in row list, header should point to what node was pointing to
     if (node->prev[ROW] == nullptr)
@@ -278,7 +270,6 @@ void SparseMatrix::deleteNode(SparseItem* node)
 
     
     
-    /* This code should not be altered and should end this function */
 #ifdef SPARSE_DEBUG    
     debug.deleteItem(node);
 #endif
@@ -286,7 +277,6 @@ void SparseMatrix::deleteNode(SparseItem* node)
     
 }
 
-// To be completed - Must adhere it requirements in the .h
 void SparseMatrix::set(const Coord& coord, double val)
 {
     if (coord[ROW] < 0 || coord[ROW] > n_-1 || coord[COL] < 0 || coord[COL] > n_-1)
@@ -385,7 +375,6 @@ void SparseMatrix::set(const Coord& coord, double val)
     }
 
 
-/* Leave these as the last lines of this function */
 #ifdef SPARSE_DEBUG    
     try {
         debug.checkConsistency(this);
@@ -396,8 +385,7 @@ void SparseMatrix::set(const Coord& coord, double val)
 #endif
 }
 
-// To be completed - Must adhere it requirements in the .h
-//   Be sure to meet the run-time requirements
+
 double SparseMatrix::sumDim(const Coord& coord) const
 {
     double sum = 0;
@@ -443,8 +431,6 @@ double SparseMatrix::sumDim(const Coord& coord) const
 
 }
 
-// To be completed - Must adhere it requirements in the .h
-//   Be sure to meet the run-time requirements
 void SparseMatrix::copyDim(const Coord& srcCoord, const Coord& dstCoord)
 {
     // Ignore self-copy - leave these as the first lines of the function 
@@ -720,7 +706,6 @@ void SparseMatrix::copyDim(const Coord& srcCoord, const Coord& dstCoord)
     }
     
 
-/* Leave these as the last lines of this function */
 #ifdef SPARSE_DEBUG    
     try {
         debug.checkConsistency(this);
