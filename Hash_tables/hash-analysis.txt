@@ -1,0 +1,32 @@
+
+         Hash Table (Linear)  |    std::map
+1E4 words     0.0047495           0.008554
+2E4 words     0.0092055           0.0197907
+4E4 words     0.023724            0.0541019
+8E4 words     0.0563761           0.163237
+
+
+Resize Loading Factor   | Hash Table Avg. Time (Linear) | Hash Table Avg. Time (Quadratic) | 
+0.2                             0.0600773                           0.0617594     
+0.4                             0.0594663                           0.0647442
+0.5                             0.0846388                           0.0697027                        
+0.6                             0.0681739                           0.0732501
+0.8                             0.0596654                           0.0622627
+
+
+Resize Loading Factor   | Hash Table Num. of Probes (Linear) | Hash Table Num. of Probes (Quadratic) | 
+0.2                             269953                                 269353
+0.4                             315118                                 309182
+0.5                             359876                                 349125
+0.6                             422322                                 398842
+0.8                             616011                                 476168
+
+
+
+It was not surprising to see that the hash table (using linear probing) was much quicker than the std::map data structure.
+Both insert and find run in logarithmic time for std::map, while both operations have a constant runtime in the hash table. 
+As expected, the average time of quadratic probing increased as the loading factor increased above 0.5. This is because
+you can only guarantee a different number everytime you mod by the table size m, for the first m/2 values. However, for a loading
+factor of 0.8, the runtime decreased again which was a bit surprising. This is more surprising to me after observing the number
+of probes of the quadratic probing, and finding that the number of probes at a loading factor of 0.8 is much higher than with the
+smaller loading factors. 
