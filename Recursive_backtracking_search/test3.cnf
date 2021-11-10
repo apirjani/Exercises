@@ -1,0 +1,5 @@
+c Only variables 1 and 2 need to be assigned
+p cnf 4 3
+ -1 3 0
+-1 4 0
+-2 0
